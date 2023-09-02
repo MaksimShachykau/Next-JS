@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import HTag from '@/components/HTag';
 
 export default function Home(): JSX.Element {
   return (
@@ -10,7 +11,7 @@ export default function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        Hello world
+        <HTag tag='h1'>Hello World</HTag>
       </main>
     </>
   );
