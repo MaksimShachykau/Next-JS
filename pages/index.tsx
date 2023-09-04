@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import HTag from '@/components/HTag';
 import Button from '@/components/Button';
+import P from '@/components/P';
 
 export default function Home(): JSX.Element {
   return (
@@ -15,6 +16,9 @@ export default function Home(): JSX.Element {
         <HTag tag='h1'>Hello World</HTag>
         <Button appearance='primary' arrow='down'>Primary button</Button>
         <Button appearance='ghost' arrow='right'>Ghost button</Button>
+        <P size='s'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
+        <P size='m'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
+        <P size='l'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
       </main>
     </>
   );
