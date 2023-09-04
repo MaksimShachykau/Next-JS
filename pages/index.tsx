@@ -13,8 +13,8 @@ export default function Home(): JSX.Element {
       </Head>
       <main>
         <HTag tag='h1'>Hello World</HTag>
-        <Button appearance='primary'>Primary button</Button>
-        <Button appearance='ghost'>Ghost button</Button>
+        <Button appearance='primary' arrow='down'>Primary button</Button>
+        <Button appearance='ghost' arrow='right'>Ghost button</Button>
       </main>
     </>
   );
