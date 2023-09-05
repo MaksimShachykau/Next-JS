@@ -36,6 +36,12 @@
 	color: var(--white);
 }
 
+.green {
+	background-color: var(--grin-884);
+	color: var(--grin-037);
+	font-weight: 700;
+}
+
 .primary {
 	border: var(--border-primary);
 	color: var(--primary);

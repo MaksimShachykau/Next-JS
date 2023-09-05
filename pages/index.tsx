@@ -25,6 +25,7 @@ export default function Home(): JSX.Element {
         <Tag size='s' color='primary' href='#'>Hello world tag</Tag>
         <Tag size='s' color='ghost'>Hello world tag</Tag>
         <Tag size='m' color='grey'>Hello world tag</Tag>
+        <Tag size='m' color='green'>Hello world tag</Tag>
       </main>
     </>
   );
