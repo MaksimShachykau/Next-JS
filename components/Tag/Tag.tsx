@@ -18,6 +18,7 @@ const Tag = ({ children, href, className, size='m', color='primary' }: ITagProps
                     [styles.ghost]: color === 'ghost',
                     [styles.grey]: color === 'grey',
                     [styles.primary]: color === 'primary',
+                    [styles.green]: color === 'green',
                 }
             )
         }>
