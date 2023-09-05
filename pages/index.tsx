@@ -2,6 +2,7 @@ import Head from 'next/head';
 import HTag from '@/components/HTag';
 import Button from '@/components/Button';
 import P from '@/components/P';
+import Tag from '@/components/Tag';
 
 export default function Home(): JSX.Element {
   return (
@@ -19,6 +20,11 @@ export default function Home(): JSX.Element {
         <P size='s'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
         <P size='m'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
         <P size='l'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
+        <Tag size='s'>Hello world tag</Tag>
+        <Tag size='s' color='red'>Hello world tag</Tag>
+        <Tag size='s' color='primary' href='#'>Hello world tag</Tag>
+        <Tag size='s' color='ghost'>Hello world tag</Tag>
+        <Tag size='m' color='grey'>Hello world tag</Tag>
       </main>
     </>
   );
