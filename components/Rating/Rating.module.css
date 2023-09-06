@@ -1,8 +1,7 @@
-.star {
-	cursor: pointer;
+.star svg {
 	margin-right: 5px;
 }
 
-.fill {
+.fill svg {
 	fill: var(--primary);
 }
