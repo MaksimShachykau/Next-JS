@@ -1,3 +1,31 @@
-.Header {
-	margin: 0;
+.footer {
+	background: var(--primary);
+	color: var(--white);
+	display: grid;
+	padding: 25px 30px;
+	gap: 10px 40px;
+	font-size: 16px;
+	line-height: 20px;
+	justify-content: center;
+	grid-template-columns: 1fr auto auto;
+}
+
+.footer a:hover {
+	color: var(--grin-884);
+}
+
+@media (width <= 750px) {
+	.footer {
+		grid-template-columns: auto;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.terms {
+		justify-self: center;
+	}
+
+	.policy {
+		justify-self: center;
+	}
 }
