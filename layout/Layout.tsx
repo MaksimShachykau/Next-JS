@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { ILayoutProps } from './Layout.props';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -15,4 +15,16 @@ const Layout = ({ children }: ILayoutProps): JSX.Element => {
     );
 };
 
-export default Layout;
+const withLayout = <T extends Record<string, unknown>> (Component: FunctionComponent<T>): FunctionComponent<T> => {
+    const WrappedComponent = (props: T): JSX.Element => {
+        return (
+            <Layout>
+                <Component {...props} />
+            </Layout>
+        );
+    };
+
+    return WrappedComponent;
+};
+
+export default withLayout;
