@@ -1,11 +1,17 @@
 import React from 'react';
-import { IFooterProps } from './Footer.props';
+import cn from 'classnames';
+import { format } from 'date-fns';
 
-const Footer = ({ ...props }: IFooterProps): JSX.Element => {
+import { IFooterProps } from './Footer.props';
+import styles from './Footer.module.css';
+
+const Footer = ({ className, ...props }: IFooterProps): JSX.Element => {
     return (
-        <div {...props}>
-            Footer
-        </div>
+        <footer {...props} className={cn(className, styles.footer)}>
+            <div className={styles.owlText}>OwlTop © 2020 - {format(new Date(), 'yyyy')} All rights reserved</div>
+            <a href='#' target='_bank' className={styles.terms}>Terms of use</a>
+            <a href='#' target='_bank' className={styles.policy}>Privacy Policy</a>
+        </footer>
     );
 };
 
