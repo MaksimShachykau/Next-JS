@@ -15,6 +15,7 @@
 # production
 /build
 .vscode
+.A_lern
 
 # misc
 .DS_Store
