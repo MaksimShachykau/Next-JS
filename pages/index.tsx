@@ -1,15 +1,22 @@
 import Head from 'next/head';
+import { useState } from 'react';
+import axios from 'axios';
+import { GetStaticProps } from 'next';
+
+import withLayout from '@/layout/Layout';
+
+import { API } from '@/helpers/api';
+
 import HTag from '@/components/HTag';
 import Button from '@/components/Button';
 import P from '@/components/P';
 import Tag from '@/components/Tag';
 import Rating from '@/components/Rating';
-import { useState } from 'react';
-import withLayout from '@/layout/Layout';
+import { IMenuItem } from '@/Interfaces/menu.interface';
 
-const Home = (): JSX.Element => {
-
+const Home = ({ menu }: IHomeProps):JSX.Element => {
   const [ rating, setRating ] = useState<number>(4);
+
   return (
     <>
       <Head>
@@ -33,9 +40,31 @@ const Home = (): JSX.Element => {
         <Tag size='m' color='green'>Hello world tag</Tag>
 
         <Rating rating={rating} setRating={setRating} isEditable />
+
+        <ul>
+          {menu.map(m => <li key={m._id.secondCategory}>{m._id.secondCategory}</li>)}
+        </ul>
       </main>
     </>
   );
 };
 
 export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<IHomeProps> = async () => {
+  const firstCategory = 0;
+
+  const { data: menu } = await axios.post<IMenuItem[]>(API.topPage.find, { firstCategory });
+
+  return {
+    props: {
+      menu,
+      firstCategory
+    }
+  };
+};
+
+interface IHomeProps extends Record<string, unknown> {
+  menu: IMenuItem[],
+  firstCategory?: number
+}
