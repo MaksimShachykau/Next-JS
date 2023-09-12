@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps<ICourseProps> = async ({ params }: G
 
 interface ICourseProps extends Record<string, unknown> {
   menu: IMenuItem[];
-  firstCategory?: number;
+  firstCategory: number;
   page: ITopPageModel;
   products: IProductModel[]
 }

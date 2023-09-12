@@ -14,7 +14,7 @@ import Tag from '@/components/Tag';
 import Rating from '@/components/Rating';
 import { IMenuItem } from '@/Interfaces/menu.interface';
 
-const Home = ({ menu }: IHomeProps):JSX.Element => {
+const Home = ({ firstCategory }: IHomeProps):JSX.Element => {
   const [ rating, setRating ] = useState<number>(4);
 
   return (
@@ -38,12 +38,8 @@ const Home = ({ menu }: IHomeProps):JSX.Element => {
         <Tag size='s' color='ghost'>Hello world tag</Tag>
         <Tag size='m' color='grey'>Hello world tag</Tag>
         <Tag size='m' color='green'>Hello world tag</Tag>
-
+        <>{firstCategory}</>
         <Rating rating={rating} setRating={setRating} isEditable />
-
-        <ul>
-          {menu.map(m => <li key={m._id.secondCategory}>{m._id.secondCategory}</li>)}
-        </ul>
       </main>
     </>
   );
@@ -66,5 +62,5 @@ export const getStaticProps: GetStaticProps<IHomeProps> = async () => {
 
 interface IHomeProps extends Record<string, unknown> {
   menu: IMenuItem[],
-  firstCategory?: number
+  firstCategory: number
 }
