@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import cn from 'classnames';
 
 import { IFirstLevelMenu, IPageItem } from '@/Interfaces/menu.interface';
@@ -20,13 +22,24 @@ const firstLevelMenu: IFirstLevelMenu[] = [
 ];
 
 const Menu = ():JSX.Element => {
-    const { firstCategory, menu } = useContext(AppContext);
+    const { firstCategory, menu, setMenu } = useContext(AppContext);
+    const router = useRouter();
+
+    const setIsOpenMenu = (secondCategory: string) => {
+      setMenu && setMenu(menu.map(m => {
+        if(m._id.secondCategory === secondCategory) {
+          m.isActive = !m.isActive;
+        }
+        return m;
+      }));
+    };
+
     const FirstLevelMenu = ():JSX.Element => {
       return (
         <>{
           firstLevelMenu.map(menu => (
             <div key={menu.route}>
-              <a href={`/${menu.route}`}
+              <Link href={`/${menu.route}`}
                 className={cn(styles['firstLevelMenu'],
                   {
                     [styles['firstLevelMenuActive']]: menu.id === firstCategory,
@@ -34,7 +47,7 @@ const Menu = ():JSX.Element => {
                 )}
               >
                 {menu.icon} <div className={styles['name']}>{menu.name}</div>
-              </a>
+              </Link>
               {menu.id === firstCategory && <SecondLevelMenu route={menu.route} />}
             </div>
           ))
@@ -45,20 +58,28 @@ const Menu = ():JSX.Element => {
     const SecondLevelMenu = ({ route }: {route: string}):JSX.Element => {
       return(
         <div className={styles['secondBlock']}>{
-          menu.map(m => (
-            <div key={m._id.secondCategory} className={styles['secondBlockWrapper']}>
-              <div className={cn(styles['secondLevel'],
-                {
-                  [styles['secondLevelActive']]: m.isActive
-                }
-              )}>
-                {m._id.secondCategory}
+          menu.map(m => {
+            if(m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])){
+              m.isActive = true;
+            }
+            return (
+              <div key={m._id.secondCategory} className={styles['secondBlockWrapper']}>
+                <div
+                  className={cn(styles['secondLevel'],
+                    {
+                      [styles['secondLevelActive']]: m.isActive
+                    }
+                  )}
+                  onClick={() => setIsOpenMenu(m._id.secondCategory)}
+                >
+                  {m._id.secondCategory}
+                </div>
+                <div>
+                  { m.isActive && <ThirdCategory route={route} pages={m.pages} /> }
+                </div>
               </div>
-              <div>
-                { m.isActive && <ThirdCategory route={route} pages={m.pages} /> }
-              </div>
-            </div>
-          ))
+            );
+          })
         }</div>
       );
     };
@@ -68,7 +89,15 @@ const Menu = ():JSX.Element => {
         <>
           {
             pages.map(p => (
-              <a className={styles['thirdLevel']} key={p._id} href={`/${route}/${p.alias}`}>{p.category}</a>
+              <Link
+                key={p._id}
+                href={`/${route}/${p.alias}`}
+                className={cn(styles['thirdLevel'], {
+                  [styles['thirdLevelActive']]: `/${route}/${p.alias}` === router.asPath
+                })}
+              >
+                {p.category}
+              </Link>
             ))
           }
         </>
