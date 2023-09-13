@@ -7,10 +7,6 @@ import withLayout from '@/layout/Layout';
 
 import { API } from '@/helpers/api';
 
-import HTag from '@/components/HTag';
-import Button from '@/components/Button';
-import P from '@/components/P';
-import Tag from '@/components/Tag';
 import Rating from '@/components/Rating';
 import { IMenuItem } from '@/Interfaces/menu.interface';
 
@@ -26,18 +22,6 @@ const Home = ({ firstCategory }: IHomeProps):JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <HTag tag='h1'>Hello World</HTag>
-        <Button appearance='primary' arrow='down'>Primary button</Button>
-        <Button appearance='ghost' arrow='right'>Ghost button</Button>
-        <P size='s'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
-        <P size='m'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
-        <P size='l'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae neque expedita debitis exercitationem! Deserunt, quibusdam? Dicta, facere! In, totam veritatis? Assumenda ex perferendis quos, autem necessitatibus et iusto qui iure.</P>
-        <Tag size='s'>Hello world tag</Tag>
-        <Tag size='s' color='red'>Hello world tag</Tag>
-        <Tag size='s' color='primary' href='#'>Hello world tag</Tag>
-        <Tag size='s' color='ghost'>Hello world tag</Tag>
-        <Tag size='m' color='grey'>Hello world tag</Tag>
-        <Tag size='m' color='green'>Hello world tag</Tag>
         <>{firstCategory}</>
         <Rating rating={rating} setRating={setRating} isEditable />
       </main>
