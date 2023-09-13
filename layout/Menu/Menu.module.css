@@ -1,3 +1,51 @@
-.Menu {
-	margin: 0;
+.firstLevelMenu {
+	display: grid;
+	grid-template-columns: 24px 1fr;
+	gap: 24px;
+	align-items: center;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 25px;
+	color: var(--grey-dark);
+	margin-bottom: 16px;
+}
+
+.secondBlock {
+	margin-left: 12px;
+	border-left: 1px solid #DFDFDF;
+}
+
+.secondBlockWrapper {
+	margin-left: 32px;
+}
+
+.secondLevel {
+	text-transform: uppercase;
+	cursor: pointer;
+	display: block;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 16px;
+	margin-bottom: 12px;
+	color: var(--grey-dark);
+}
+
+.thirdLevel {
+	display: block;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 19px;
+	margin-bottom: 10px;
+	color: var(--grey-dark);
+}
+
+.firstLevelMenu:hover,
+.secondLevel:hover,
+.thirdLevel:hover,
+.firstLevelMenuActive,
+.secondLevelActive,
+.firstLevelMenuActive svg,
+.firstLevelMenu:hover svg {
+	color: var(--primary);
+	fill:  var(--primary);
 }
