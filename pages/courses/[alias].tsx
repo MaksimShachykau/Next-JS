@@ -29,8 +29,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
         paths: menu.flatMap(m => m.pages.map(p => `/courses/${p.alias}`)),
         fallback: true
     };
-
 };
+
 export const getStaticProps: GetStaticProps<ICourseProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if(!params) {
     return {
