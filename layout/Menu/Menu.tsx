@@ -10,7 +10,7 @@ import { TopLevelCategory } from '@/Interfaces/page.interface';
 import CoursesSvg from './icons/Courses.svg';
 import BooksSvg from './icons/Books.svg';
 import ServicesSvg from './icons/Services.svg';
-import ProductsSvg from './icons/Courses.svg';
+import ProductsSvg from './icons/Products.svg';
 
 import styles from './Menu.module.css';
 
