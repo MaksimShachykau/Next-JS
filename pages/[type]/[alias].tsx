@@ -11,15 +11,20 @@ import { ParsedUrlQuery } from 'querystring';
 import { ITopPageModel } from '@/Interfaces/page.interface';
 import { IProductModel } from '@/Interfaces/product.interface';
 import { firstLevelMenu } from '@/helpers/helpers';
+import TopPageComponents from '@/pages-component/TopPageComponent';
 
-const Home = ({ page }: ICourseProps):JSX.Element => {
+const TopPage = ({ page, firstCategory, products }: ITopPageProps):JSX.Element => {
 
   return (
-    <>{page?.category && page.category}</>
+    <TopPageComponents
+      page={page}
+      firstCategory={firstCategory}
+      products={products}
+    />
   );
 };
 
-export default withLayout(Home);
+export default withLayout(TopPage);
 
 export const getStaticPaths: GetStaticPaths = async () => {
 
@@ -42,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<ICourseProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
+export const getStaticProps: GetStaticProps<ITopPageProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if(!params) {
     return {
         notFound: true
@@ -78,7 +83,7 @@ export const getStaticProps: GetStaticProps<ICourseProps> = async ({ params }: G
   }
 };
 
-interface ICourseProps extends Record<string, unknown> {
+interface ITopPageProps extends Record<string, unknown> {
   menu: IMenuItem[];
   firstCategory: number;
   page: ITopPageModel;
