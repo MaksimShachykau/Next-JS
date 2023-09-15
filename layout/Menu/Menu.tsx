@@ -3,23 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 
-import { IFirstLevelMenu, IPageItem } from '@/Interfaces/menu.interface';
+import { IPageItem } from '@/Interfaces/menu.interface';
 import { AppContext } from '@/context/app.context';
-import { TopLevelCategory } from '@/Interfaces/page.interface';
-
-import CoursesSvg from './icons/Courses.svg';
-import BooksSvg from './icons/Books.svg';
-import ServicesSvg from './icons/Services.svg';
-import ProductsSvg from './icons/Products.svg';
 
 import styles from './Menu.module.css';
-
-const firstLevelMenu: IFirstLevelMenu[] = [
-  { route: 'courses', name: 'Courses', id: TopLevelCategory.Courses, icon: <CoursesSvg/> },
-  { route: 'services', name: 'Services', id: TopLevelCategory.Services, icon: <ServicesSvg/> },
-  { route: 'books', name: 'Books', id: TopLevelCategory.Books, icon: <BooksSvg/> },
-  { route: 'products', name: 'Products', id: TopLevelCategory.Products, icon: <ProductsSvg/> }
-];
+import { firstLevelMenu } from '@/helpers/helpers';
 
 const Menu = ():JSX.Element => {
     const { firstCategory, menu, setMenu } = useContext(AppContext);
