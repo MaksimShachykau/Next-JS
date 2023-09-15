@@ -24,7 +24,7 @@ const Menu = ():JSX.Element => {
 
     const FirstLevelMenu = ():JSX.Element => {
       return (
-        <>{
+        <div>{
           firstLevelMenu.map(menu => (
             <div key={menu.route}>
               <Link href={`/${menu.route}`}
@@ -39,7 +39,7 @@ const Menu = ():JSX.Element => {
               {menu.id === firstCategory && <SecondLevelMenu route={menu.route} />}
             </div>
           ))
-        }</>
+        }</div>
       );
     };
 
