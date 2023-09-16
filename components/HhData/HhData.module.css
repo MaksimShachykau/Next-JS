@@ -1,0 +1,89 @@
+.hhTagTitle {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 20px;
+	align-items: baseline;
+	justify-items: start;
+}
+
+.hhData {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 20px;
+}
+
+.salaryCards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.salaryCards > div {
+	border-right: var(--border-btn-gray);
+}
+
+.salaryCards > div:last-child {
+	border-right: none;
+}
+
+.hhStatRating {
+	display: grid;
+	grid-template-columns: repeat(3, 20px);
+	gap: 10px;
+}
+
+.fillStart circle {
+	fill: var(--red-836);
+}
+
+.hhStatSalary {
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 35px;
+	letter-spacing: 0;
+}
+
+.hhStat, .salaryCard {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+}
+
+.hhStatTitle {
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 27px;
+	letter-spacing: 0;
+}
+
+.hhStatCount {
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 49px;
+	letter-spacing: 0;
+	color: var(--primary);
+}
+
+@media (width <= 1200px) {
+	.hhData {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (width <= 640px) {
+	.salaryCards {
+		grid-template-columns: 1fr;
+		margin-bottom: 20px;
+	}
+
+	.salaryCards > div {
+		border-right: none;
+		border-bottom: var(--border-btn-gray);
+		padding-bottom: 20px;
+	}
+
+	.salaryCards > div:last-child {
+		border-bottom: none;
+	}
+}
