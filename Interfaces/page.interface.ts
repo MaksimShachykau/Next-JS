@@ -35,4 +35,5 @@ export interface ITopPageModel {
     createdAt: Date;
     updatedAt: Date;
     hh: IHhData;
+    advantages: ITopPageAdvantage[];
 }
