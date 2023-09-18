@@ -6,6 +6,7 @@ import Tag from '../Tag';
 import Star from './Star.svg';
 
 import styles from './HhData.module.css';
+import getPrice from '@/helpers/getPrice';
 
 const HhData = ({ count, category, juniorSalary, middleSalary, seniorSalary }: IHhProps): JSX.Element => {
     return (
@@ -22,7 +23,7 @@ const HhData = ({ count, category, juniorSalary, middleSalary, seniorSalary }: I
                 <Card className={styles['salaryCards']}>
                     <div className={styles['salaryCard']}>
                         <div className={styles['hhStatTitle']}>Junior</div>
-                        <div className={styles['hhStatSalary']}>{juniorSalary}</div>
+                        <div className={styles['hhStatSalary']}>{getPrice(juniorSalary)}</div>
                         <div className={styles['hhStatRating']}>
                             <Star className={styles['fillStart']}/>
                             <Star/>
@@ -31,7 +32,7 @@ const HhData = ({ count, category, juniorSalary, middleSalary, seniorSalary }: I
                     </div>
                     <div className={styles['salaryCard']}>
                         <div className={styles['hhStatTitle']}>Middle</div>
-                        <div className={styles['hhStatSalary']}>{middleSalary}</div>
+                        <div className={styles['hhStatSalary']}>{getPrice(middleSalary)}</div>
                         <div className={styles['hhStatRating']}>
                             <Star className={styles['fillStart']}/>
                             <Star className={styles['fillStart']}/>
@@ -40,7 +41,7 @@ const HhData = ({ count, category, juniorSalary, middleSalary, seniorSalary }: I
                     </div>
                     <div className={styles['salaryCard']}>
                         <div className={styles['hhStatTitle']}>Senior</div>
-                        <div className={styles['hhStatSalary']}>{seniorSalary}</div>
+                        <div className={styles['hhStatSalary']}>{getPrice(seniorSalary)}</div>
                         <div className={styles['hhStatRating']}>
                             <Star className={styles['fillStart']}/>
                             <Star className={styles['fillStart']}/>
