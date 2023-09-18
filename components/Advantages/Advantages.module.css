@@ -1,0 +1,30 @@
+.Advantages {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 20px 0;
+}
+
+.advantage {
+	display: grid;
+	grid-template-columns: 50px auto;
+	gap: 20px;
+	position: relative;
+}
+
+.advantage::before {
+	content: '';
+	height: calc(100% - 70px);
+	align-items: end;
+	position: absolute;
+	border-left: var(--border-btn-gray);
+	left: 25px;
+	top: 60px;
+}
+
+.advantage p {
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 29px;
+	letter-spacing: 0;
+}
