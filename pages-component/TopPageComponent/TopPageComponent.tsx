@@ -22,8 +22,10 @@ const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JS
             {firstCategory === TopLevelCategory.Courses && <HhData {...page.hh} category={page.category} />}
             { page &&
                 <>
-                    {page?.advantages.length && <Advantages advantages={page.advantages}/>}
+                    {page.advantages.length && <Advantages advantages={page.advantages}/>}
                     <SkillBlock categories={page.tags}/>
+                    { page.seoText && <div className={styles['seo']} dangerouslySetInnerHTML={ { __html: page.seoText } }/> }
+
                 </>
             }
         </div>
