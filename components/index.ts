@@ -7,3 +7,4 @@ export * from './Card';
 export * from './HhData';
 export * from './Advantages/Advantages';
 export * from './SkillsBlock';
+export * from './Sort';
