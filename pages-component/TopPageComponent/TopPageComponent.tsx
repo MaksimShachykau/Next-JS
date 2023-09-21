@@ -9,6 +9,8 @@ import SkillBlock from '@/components/SkillsBlock';
 import { TopLevelCategory } from '@/Interfaces/page.interface';
 
 import styles from './TopPageComponent.module.css';
+import Sort from '@/components/Sort';
+import { SortEnum } from '@/components/Sort/Sort.props';
 
 
 const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JSX.Element => {
@@ -17,7 +19,7 @@ const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JS
             <div className={styles.header}>
                 {page && <HTag tag='h2'>{page.title}</HTag>}
                 {products && <Tag color='grey' size='m'>{products.length}</Tag>}
-                <div>sort component</div>
+                <Sort sort={SortEnum.ByRate} setSort={() => {}}/>
             </div>
             {firstCategory === TopLevelCategory.Courses && <HhData {...page.hh} category={page.category} />}
             { page &&
