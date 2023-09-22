@@ -9,3 +9,4 @@ export * from './Advantages/Advantages';
 export * from './SkillsBlock';
 export * from './Sort';
 export * from './Input';
+export * from './TextAria';
