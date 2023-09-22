@@ -9,6 +9,7 @@ import { API } from '@/helpers/api';
 
 import Rating from '@/components/Rating';
 import { IMenuItem } from '@/Interfaces/menu.interface';
+import Input from '@/components/Input';
 
 const Home = ({ firstCategory }: IHomeProps):JSX.Element => {
   const [ rating, setRating ] = useState<number>(4);
@@ -24,6 +25,7 @@ const Home = ({ firstCategory }: IHomeProps):JSX.Element => {
       <main>
         <>{firstCategory}</>
         <Rating rating={rating} setRating={setRating} isEditable />
+        <Input placeholder='test placeholder' />
       </main>
     </>
   );
