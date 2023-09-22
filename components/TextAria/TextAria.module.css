@@ -1,0 +1,14 @@
+.TextAria {
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 4px 4px 0 #0000000D;
+	color: var(--black);
+	padding: 10px;
+	font-family: var(--font-family);
+	outline-color: var(--primary);
+}
+
+.TextAria::placeholder {
+	color: var(--gray-444);
+	font-family: var(--font-family);
+}
