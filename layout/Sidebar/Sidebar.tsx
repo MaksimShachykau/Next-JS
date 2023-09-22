@@ -6,6 +6,7 @@ import Logo from '../../icons/Logo.svg';
 
 import styles from './Sidebar.module.css';
 import Menu from '../Menu';
+import Search from '@/components/Search';
 
 const Sidebar = ({ className, ...props }: ISidebarProps): JSX.Element => {
     return(
@@ -13,7 +14,7 @@ const Sidebar = ({ className, ...props }: ISidebarProps): JSX.Element => {
             [styles['sidebar']]: true
         })} {...props}>
             <Logo className={styles['logo']} />
-            <>Search</>
+            <Search />
             <Menu />
         </div>
     );
