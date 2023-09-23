@@ -10,12 +10,13 @@ import SkillBlock from '@/components/SkillsBlock';
 
 import { TopLevelCategory } from '@/Interfaces/page.interface';
 
-import styles from './TopPageComponent.module.css';
 import { sortReducer } from '@/components/Sort/sort.reducer';
 import { SortEnum } from '@/components/Sort/Sort.props';
 import Sort from '@/components/Sort';
+import Product from '@/components/Product';
 
-// import { sortReducer } from './sort.reducer';
+import styles from './TopPageComponent.module.css';
+
 
 const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JSX.Element => {
     const[{products: sortedProducts, sort}, dispatchProducts] = useReducer(sortReducer, { products, sort: SortEnum.ByRate });
@@ -33,7 +34,7 @@ const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JS
             </div>
             {sortedProducts && (
                 <ul>
-                    {sortedProducts.map(e => <li key={e._id}>{e.title}</li>)}
+                    {sortedProducts.map(e => <Product key={e._id} product={e} />)}
                 </ul>
             )}
             {firstCategory === TopLevelCategory.Courses && <HhData {...page.hh} category={page.category} />}
