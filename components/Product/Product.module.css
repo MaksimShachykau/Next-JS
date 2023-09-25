@@ -1,11 +1,12 @@
 .Product {
 	display: grid;
-	grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] auto [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratestart] auto [end];
+	grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(45% - 100px) [middle] auto [pricestart] auto [priceend] 20px [creditstart] auto [creditend] 20px [ratestart] auto [end];
 }
 
 .logo {
 	grid-column: start / logoend;
 	grid-row: 1 / span 2;
+	border-radius: 5px;
 }
 
 .title, .categories {
@@ -34,6 +35,10 @@
 	grid-column: start / middle;
 }
 
+.characteristicsBlockFullBlock {
+	grid-column: start / end;
+}
+
 .characteristic {
 	display: flex;
 	justify-content: space-between;
@@ -45,6 +50,15 @@
 	grid-column: middle / end;
 }
 
+.description{
+	grid-column: start / end;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0;
+	margin-bottom: 20px;
+}
+
 .actions {
 	grid-column: start / middle;
 	display: flex;
@@ -53,5 +67,50 @@
 
 .hr {
 	grid-column: start / end;
-	margin: 10px 0;
+	margin: 20px 0;
+	height: 1px;
+	border: none;
+	background: var(--gray-light);
+}
+
+.title {
+	align-self: flex-end;
+	margin-bottom: 5px;
+}
+
+.price {
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 27px;
+}
+
+.credit {
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 27px;
+}
+
+.oldPrice {
+	margin-left: 5px;
+	font-size: 14px;
+	font-weight: 400;
+	padding: 6px;
+}
+
+.advantage {
+	border-left: 3px solid var(--grin-037);
+	padding-left: 10px;
+}
+
+.advantage h3, .disadvantage h3{
+	margin-bottom: 10px;
+}
+
+.disadvantage {
+	border-left: 3px solid var(--red-836);
+	padding-left: 10px;
+}
+
+.price, .credit, .rating {
+	align-self: flex-end;
 }
