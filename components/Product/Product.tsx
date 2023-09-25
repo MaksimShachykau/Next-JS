@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import cn from 'classnames';
 import Card from "../Card";
 import { IProductProps } from "./Product.props";
 
@@ -6,6 +7,8 @@ import styles from "./Product.module.css";
 import Rating from "../Rating";
 import Tag from "../Tag";
 import Button from "../Button";
+import HTag from "../HTag";
+import getPrice from "@/helpers/getPrice";
 
 const Product = ({ product }: IProductProps): JSX.Element => {
   return (
@@ -15,9 +18,14 @@ const Product = ({ product }: IProductProps): JSX.Element => {
         alt={product.title}
         className={styles.logo}
       />
-      <div className={styles.title}>{product.title}</div>
-      <div className={styles.price}>{product.price}</div>
-      <div className={styles.credit}>{product.credit}</div>
+      <HTag tag="h3" className={styles.title}>{product.title}</HTag>
+      <div className={styles.price}>
+        {getPrice(product.price)}
+        <Tag color="green" className={styles.oldPrice}>{getPrice(product.oldPrice)}</Tag>
+      </div>
+      <div className={styles.credit}>
+        {getPrice(product.credit)}/<span>month</span>
+      </div>
       <div className={styles.rating}>
         <Rating rating={product.reviewAvg ?? product.initialRating} />
       </div>
@@ -32,7 +40,12 @@ const Product = ({ product }: IProductProps): JSX.Element => {
       <div className={styles.creditText}>Credit</div>
       <div className={styles.reviewText}>{product.reviewCount} reviews</div>
       <hr className={styles.hr}/>
-      <div className={styles.characteristicsBlock}>
+      <div className={styles.description}>
+        {product.description}
+      </div>
+      <div className={cn(styles.characteristicsBlock, {
+        [styles.characteristicsBlockFullBlock]: !product.advantages && !product.disadvantages
+      })}>
         <div className={styles.characteristics}>{product.characteristics.map(c => (
             <div key={c.name} className={styles.characteristic}>
                 <span>{c.name}</span>
@@ -42,8 +55,14 @@ const Product = ({ product }: IProductProps): JSX.Element => {
         <Button appearance="ghost">Job guarantee</Button>
       </div>
       <div className={styles.adwBlock}>
-        <div className={styles.advantage}>{product.advantages}</div>
-        <div className={styles.disadvantage}>{product.disadvantages}</div>
+        {product.advantages && <div className={styles.advantage}>
+          <HTag tag="h3">Advantages</HTag>
+          {product.advantages}
+        </div>}
+        {product.disadvantages && <div className={styles.disadvantage}>
+          <HTag tag="h3">Disadvantages</HTag>
+          {product.disadvantages}
+        </div>}
       </div>
       <hr className={styles.hr}/>
       <div className={styles.actions}>
