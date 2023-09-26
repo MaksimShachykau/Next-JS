@@ -9,6 +9,7 @@ import Tag from "../Tag";
 import Button from "../Button";
 import HTag from "../HTag";
 import getPrice from "@/helpers/getPrice";
+import { pluralEnd } from '@/helpers/helpers';
 
 const Product = ({ product }: IProductProps): JSX.Element => {
   return (
@@ -38,7 +39,7 @@ const Product = ({ product }: IProductProps): JSX.Element => {
       </div>
       <div className={styles.priceText}>Price</div>
       <div className={styles.creditText}>Credit</div>
-      <div className={styles.reviewText}>{product.reviewCount} reviews</div>
+      <div className={styles.reviewText}>{product.reviewCount} {pluralEnd(product.reviewCount, 'review')}</div>
       <hr className={styles.hr}/>
       <div className={styles.description}>
         {product.description}
@@ -49,6 +50,7 @@ const Product = ({ product }: IProductProps): JSX.Element => {
         <div className={styles.characteristics}>{product.characteristics.map(c => (
             <div key={c.name} className={styles.characteristic}>
                 <span>{c.name}</span>
+                <span className={styles.pointSpace}/>
                 <span>{c.value}</span>
             </div>
         ))}</div>
