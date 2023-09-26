@@ -40,10 +40,14 @@
 }
 
 .characteristic {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
 	padding-right: 20px;
 	margin-bottom: 10px;
+}
+
+.pointSpace {
+	border-bottom: 1px dashed var(--gray-light);
 }
 
 .adwBlock {

@@ -12,3 +12,11 @@ export const firstLevelMenu: IFirstLevelMenu[] = [
     { route: 'books', name: 'Books', id: TopLevelCategory.Books, icon: <BooksSvg/> },
     { route: 'products', name: 'Products', id: TopLevelCategory.Products, icon: <ProductsSvg/> }
 ];
+
+export const pluralEnd = (count: number, word: string):string => {
+    if(count === 1) {
+        return word;
+    }
+
+    return `${word}s`;
+};
