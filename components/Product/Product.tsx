@@ -69,7 +69,7 @@ const Product = ({ product }: IProductProps): JSX.Element => {
           {product.disadvantages}
         </div>}
       </div>
-      <hr className={styles.hr}/>
+      <hr className={cn(styles.hr, styles.hr2)}/>
       <div className={styles.actions}>
         <Button appearance="primary">About</Button>
         <Button appearance="ghost" arrow={'right'}>Rear reviews</Button>
