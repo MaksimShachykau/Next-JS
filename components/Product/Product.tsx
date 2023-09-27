@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 import cn from 'classnames';
+import Image from 'next/image';
+
 import Card from "../Card";
 import { IProductProps } from "./Product.props";
-
 import styles from "./Product.module.css";
 import Rating from "../Rating";
 import Tag from "../Tag";
@@ -11,12 +11,15 @@ import HTag from "../HTag";
 import getPrice from "@/helpers/getPrice";
 import { pluralEnd } from '@/helpers/helpers';
 
+
 const Product = ({ product }: IProductProps): JSX.Element => {
   return (
     <Card className={styles.Product}>
-      <img
+      <Image
         src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
         alt={product.title}
+        width={70}
+        height={70}
         className={styles.logo}
       />
       <HTag tag="h3" className={styles.title}>{product.title}</HTag>
