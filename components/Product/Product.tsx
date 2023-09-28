@@ -90,7 +90,13 @@ const Product = ({ product }: IProductProps): JSX.Element => {
         [styles.reviewsOpen]: isOpenReviews,
         [styles.reviewsClosed]: !isOpenReviews,
       })}>
-        {product.reviews.map(r => <Review key={r._id} review={r}/> )}
+        {product.reviews.map(r => (
+          <>
+            <Review key={r._id} review={r}/>
+            <hr className={styles.hr}/>
+          </>
+          )
+        )}
       </Card>
     </>
   );
