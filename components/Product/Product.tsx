@@ -12,6 +12,7 @@ import HTag from "../HTag";
 import getPrice from "@/helpers/getPrice";
 import { pluralEnd } from '@/helpers/helpers';
 import Review from '../Review';
+import ReviewForm from '../ReviewForm';
 
 
 const Product = ({ product }: IProductProps): JSX.Element => {
@@ -97,6 +98,7 @@ const Product = ({ product }: IProductProps): JSX.Element => {
           </>
           )
         )}
+        <ReviewForm productId={product._id} />
       </Card>
     </>
   );
