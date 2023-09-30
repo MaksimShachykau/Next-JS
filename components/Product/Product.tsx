@@ -92,10 +92,10 @@ const Product = ({ product }: IProductProps): JSX.Element => {
         [styles.reviewsClosed]: !isOpenReviews,
       })}>
         {product.reviews.map(r => (
-          <>
-            <Review key={r._id} review={r}/>
-            <hr className={styles.hr}/>
-          </>
+          <div key={r._id}>
+            <Review review={r} />
+            <hr className={styles.hr} />
+          </div>
           )
         )}
         <ReviewForm productId={product._id} />
