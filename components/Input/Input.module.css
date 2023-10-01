@@ -1,3 +1,18 @@
+.inputWrapper {
+	position: relative;
+}
+
+.Input.InputError {
+	border: 2px solid var(--red-000);
+}
+
+.errorText {
+	color: var(--red-000);
+	position: absolute;
+	left: 0;
+	bottom: -20px;
+}
+
 .Input {
 	border: none;
 	border-radius: 5px;

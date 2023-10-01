@@ -6,9 +6,25 @@
 	padding: 10px;
 	font-family: var(--font-family);
 	outline-color: var(--primary);
+	width: 100%;
 }
 
 .TextAria::placeholder {
 	color: var(--gray-444);
 	font-family: var(--font-family);
+}
+
+.textAriaWrapper {
+	position: relative;
+}
+
+.TextAria.textAriaError {
+	border: 2px solid var(--red-000);
+}
+
+.errorText {
+	color: var(--red-000);
+	position: absolute;
+	left: 0;
+	bottom: -15px;
 }
