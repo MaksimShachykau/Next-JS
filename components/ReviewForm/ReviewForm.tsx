@@ -9,7 +9,7 @@ import { useForm, Controller } from "react-hook-form";
 import { IFormInterface } from "./FormInterface";
 
 const ReviewForm = ({ productId, ...props }: ReviewFormProps): JSX.Element => {
-    const { handleSubmit, register, control } = useForm<IFormInterface>();
+    const { handleSubmit, register, control, formState: { errors } } = useForm<IFormInterface>();
 
     const onSubmit = (data: IFormInterface) => {
         console.log(data);
@@ -18,19 +18,36 @@ const ReviewForm = ({ productId, ...props }: ReviewFormProps): JSX.Element => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.reviewForm} id={productId} {...props}>
-                <Input {...register('name')} placeholder="Name" />
-                <Input {...register('title')} placeholder="Title review" className={styles['reviewTitle']}/>
+                <Input
+                    {...register('name', {required: {value: true, message: 'Name is required'}})}
+                    placeholder="Name"
+                    error={errors.name}
+                />
+                <Input
+                    {...register('title', { required: { value: true, message: 'Title is required' } })}
+                    placeholder="Title review"
+                    className={styles['reviewTitle']}
+                    error={errors.title}
+                />
                 <div className={styles['rating']}>
-                    <span>Grade:</span>
+                    {/* <span>Grade:</span> */}
                     <Controller
                         name="rating"
                         control={control}
+                        rules={
+                            { required: { value: true, message: 'Rating is required' } }
+                        }
                         render={({ field }) => (
-                            <Rating rating={field.value} ref={field.ref} isEditable setRating={field.onChange}/>
+                            <Rating withText rating={field.value} error={errors.rating} ref={field.ref} isEditable setRating={field.onChange}/>
                         )}
                     />
                 </div>
-                <TextAria {...register('description')} placeholder="Review text" className={styles['reviewText']} />
+                <TextAria
+                    {...register('description', { required: { value: true, message: 'description is required' } })}
+                    placeholder="Review text"
+                    className={styles['reviewText']}
+                    error={errors.description}
+                />
                 <div className={styles['sendBlock']}>
                     <Button appearance="primary" type="submit">Send review</Button>
                     <p>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</p>
