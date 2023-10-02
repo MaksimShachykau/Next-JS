@@ -26,6 +26,24 @@
 	gap: 20px;
 }
 
+.sendResponseError {
+	background-color: var(--red-191);
+	border-radius: 5px;
+	position: relative;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.sendResponseError-bpn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.sendResponseError-bpn path {
+	stroke: var(--red-000);
+}
+
 .sendResponse {
 	background-color: var(--grin-884);
 	border-radius: 5px;

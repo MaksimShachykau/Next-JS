@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ReviewFormProps } from "./ReviewForm.props";
 import styles from './ReviewForm.module.css';
 import Input from "../Input";
@@ -6,13 +7,26 @@ import TextAria from "../TextAria";
 import Button from "../Button";
 import CloseBtn from './CloseBtn.svg';
 import { useForm, Controller } from "react-hook-form";
-import { IFormInterface } from "./FormInterface";
+import { IFormInterface, IReviewSentResponse } from "./FormInterface";
+import axios from "axios";
+import { API } from "@/helpers/api";
 
 const ReviewForm = ({ productId, ...props }: ReviewFormProps): JSX.Element => {
     const { handleSubmit, register, control, formState: { errors } } = useForm<IFormInterface>();
 
-    const onSubmit = (data: IFormInterface) => {
-        console.log(data);
+    const [isSentSuccess, setIsSentSuccess] = useState<boolean | undefined>();
+
+    const onSubmit = async (formData: IFormInterface) => {
+        try {
+            const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId } );
+            if(data.message) {
+                setIsSentSuccess(true);
+            } else {
+                setIsSentSuccess(false);
+            }
+        } catch (e) {
+            setIsSentSuccess(false);
+        }
     };
 
     return (
@@ -30,7 +44,6 @@ const ReviewForm = ({ productId, ...props }: ReviewFormProps): JSX.Element => {
                     error={errors.title}
                 />
                 <div className={styles['rating']}>
-                    {/* <span>Grade:</span> */}
                     <Controller
                         name="rating"
                         control={control}
@@ -53,11 +66,15 @@ const ReviewForm = ({ productId, ...props }: ReviewFormProps): JSX.Element => {
                     <p>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</p>
                 </div>
             </div>
-            <div className={styles['sendResponse']}>
+            {isSentSuccess && <div className={styles['sendResponse']}>
                 <p className={styles['sendResponse-title']}>Your review sended</p>
                 <p className={styles['sendResponse-text']}>Thanks for you review</p>
-                <CloseBtn className={styles['sendResponse-bpn']}/>
-            </div>
+                <CloseBtn className={styles['sendResponse-bpn']} onClick={() => setIsSentSuccess(undefined)} />
+            </div>}
+            {isSentSuccess === false && <div className={styles['sendResponseError']}>
+                <p className={styles['sendResponseError-title']}>Your review sended</p>
+                <CloseBtn className={styles['sendResponseError-bpn']} onClick={() => setIsSentSuccess(undefined)} />
+            </div>}
         </form>
     );
 };
