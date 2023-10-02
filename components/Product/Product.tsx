@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 
 import Card from "../Card";
@@ -17,6 +17,16 @@ import ReviewForm from '../ReviewForm';
 
 const Product = ({ product }: IProductProps): JSX.Element => {
   const [isOpenReviews, setIsOpenReviews] = useState<boolean>(false);
+  const reviewRef = useRef<HTMLDivElement>(null);
+
+  const scrollToReview = () => {
+    setIsOpenReviews(true);
+    reviewRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
   return (
     <>
       <Card className={styles.Product}>
@@ -47,7 +57,11 @@ const Product = ({ product }: IProductProps): JSX.Element => {
         </div>
         <div className={styles.priceText}>Price</div>
         <div className={styles.creditText}>Credit</div>
-        <div className={styles.reviewText}>{product.reviewCount} {pluralEnd(product.reviewCount, 'review')}</div>
+        <div className={styles.reviewText}>
+          <a href='#rev' onClick={scrollToReview}>
+            {product.reviewCount} {pluralEnd(product.reviewCount, 'review')}
+          </a>
+        </div>
         <hr className={styles.hr}/>
         <div className={styles.description}>
           {product.description}
@@ -90,7 +104,9 @@ const Product = ({ product }: IProductProps): JSX.Element => {
       <Card background='blue' className={cn(styles.reviews, {
         [styles.reviewsOpen]: isOpenReviews,
         [styles.reviewsClosed]: !isOpenReviews,
-      })}>
+      })}
+        ref={reviewRef}
+      >
         {product.reviews.map(r => (
           <div key={r._id}>
             <Review review={r} />
