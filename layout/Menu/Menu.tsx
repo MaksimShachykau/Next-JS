@@ -8,6 +8,29 @@ import { AppContext } from '@/context/app.context';
 
 import styles from './Menu.module.css';
 import { firstLevelMenu } from '@/helpers/helpers';
+import { motion } from 'framer-motion';
+
+const variants = {
+  visible: {
+    transition: {
+      when: 'beforeChildren',
+      staggerChildren: 0.1
+    }
+  },
+};
+
+
+const variantsChildren = {
+  visible: {
+    opacity: 1,
+    height: 35
+  },
+
+  hidden: {
+    opacity: 0,
+    height: 0,
+  }
+};
 
 const Menu = ():JSX.Element => {
     const { firstCategory, menu, setMenu } = useContext(AppContext);
@@ -15,8 +38,8 @@ const Menu = ():JSX.Element => {
 
     const setIsOpenMenu = (secondCategory: string) => {
       setMenu && setMenu(menu.map(m => {
-        if(m._id.secondCategory === secondCategory) {
-          m.isActive = !m.isActive;
+        if (m._id.secondCategory === secondCategory) {
+          m.isOpened = !m.isOpened;
         }
         return m;
       }));
@@ -45,50 +68,51 @@ const Menu = ():JSX.Element => {
 
     const SecondLevelMenu = ({ route }: {route: string}):JSX.Element => {
       return(
-        <div className={styles['secondBlock']}>{
-          menu.map(m => {
-            if(m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])){
-              m.isActive = true;
+        <div className={styles['secondBlock']}>
+          { menu.map(m => {
+            if(m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
+              m.isOpened = true;
             }
+            console.log(m._id.secondCategory, m.isOpened);
             return (
               <div key={m._id.secondCategory} className={styles['secondBlockWrapper']}>
-                <div
-                  className={cn(styles['secondLevel'],
-                    {
-                      [styles['secondLevelActive']]: m.isActive
-                    }
-                  )}
+                <div className={cn(styles['secondLevel'], { [styles['secondLevelActive']]: m.isOpened })}
                   onClick={() => setIsOpenMenu(m._id.secondCategory)}
                 >
                   {m._id.secondCategory}
                 </div>
-                <div>
-                  { m.isActive && <ThirdCategory route={route} pages={m.pages} /> }
-                </div>
+                <motion.div
+                  layout
+                  variants={variants}
+                  initial={'hidden'}
+                  animate={m.isOpened ? 'visible' : 'hidden'}
+                >
+                  {getCategory(route, m.pages)}
+                </motion.div>
               </div>
             );
-          })
-        }</div>
+          })}
+        </div>
       );
     };
 
-    const ThirdCategory = ({ route, pages }: {route: string, pages: IPageItem[]}):JSX.Element => {
+    const getCategory = (route: string, pages: IPageItem[]) => {
       return (
-        <>
-          {
             pages.map(p => (
-              <Link
+              <motion.div
+                variants={variantsChildren}
                 key={p._id}
-                href={`/${route}/${p.alias}`}
-                className={cn(styles['thirdLevel'], {
-                  [styles['thirdLevelActive']]: `/${route}/${p.alias}` === router.asPath
-                })}
               >
-                {p.category}
-              </Link>
+                <Link
+                  href={`/${route}/${p.alias}`}
+                  className={cn(styles['thirdLevel'], {
+                    [styles['thirdLevelActive']]: `/${route}/${p.alias}` === router.asPath
+                  })}
+                >
+                  {p.category}
+                </Link>
+              </motion.div>
             ))
-          }
-        </>
       );
     };
 
