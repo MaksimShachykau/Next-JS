@@ -16,7 +16,6 @@ import Product from '@/components/Product';
 
 import styles from './TopPageComponent.module.css';
 
-
 const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JSX.Element => {
     const[{products: sortedProducts, sort}, dispatchProducts] = useReducer(sortReducer, { products, sort: SortEnum.ByRate });
 
