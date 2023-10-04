@@ -15,6 +15,7 @@ import Sort from '@/components/Sort';
 import Product from '@/components/Product';
 
 import styles from './TopPageComponent.module.css';
+import Up from '@/components/Up';
 
 const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JSX.Element => {
     const[{products: sortedProducts, sort}, dispatchProducts] = useReducer(sortReducer, { products, sort: SortEnum.ByRate });
@@ -38,7 +39,7 @@ const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JS
                 {sortedProducts && sortedProducts.map(e => <Product layout key={e._id} product={e} />)}
             </div>
             {firstCategory === TopLevelCategory.Courses && <HhData {...page.hh} category={page.category} />}
-            { page &&
+            {page &&
                 <>
                     {page.advantages.length && <Advantages advantages={page.advantages}/>}
                     <SkillBlock categories={page.tags}/>
@@ -46,6 +47,7 @@ const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JS
 
                 </>
             }
+            <Up />
         </div>
     );
 };
