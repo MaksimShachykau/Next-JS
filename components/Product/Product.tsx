@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useRef, useState } from 'react';
+import { ForwardedRef, forwardRef, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import Card from "../Card";
@@ -13,9 +13,10 @@ import getPrice from "@/helpers/getPrice";
 import { pluralEnd } from '@/helpers/helpers';
 import Review from '../Review';
 import ReviewForm from '../ReviewForm';
+import { motion } from 'framer-motion';
 
 
-const Product = ({ product }: IProductProps): JSX.Element => {
+const Product = motion(forwardRef(({ product, ...props }: IProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
   const [isOpenReviews, setIsOpenReviews] = useState<boolean>(false);
   const reviewRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +29,7 @@ const Product = ({ product }: IProductProps): JSX.Element => {
   };
 
   return (
-    <>
+    <div {...props} ref={ref}>
       <Card className={styles.Product}>
         <Image
           src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
@@ -116,8 +117,8 @@ const Product = ({ product }: IProductProps): JSX.Element => {
         )}
         <ReviewForm productId={product._id} />
       </Card>
-    </>
+    </div>
   );
-};
+}));
 
 export default Product;
