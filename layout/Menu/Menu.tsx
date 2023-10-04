@@ -73,7 +73,6 @@ const Menu = ():JSX.Element => {
             if(m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
               m.isOpened = true;
             }
-            console.log(m._id.secondCategory, m.isOpened);
             return (
               <div key={m._id.secondCategory} className={styles['secondBlockWrapper']}>
                 <div className={cn(styles['secondLevel'], { [styles['secondLevelActive']]: m.isOpened })}
@@ -84,10 +83,10 @@ const Menu = ():JSX.Element => {
                 <motion.div
                   layout
                   variants={variants}
-                  initial={'hidden'}
-                  animate={m.isOpened ? 'visible' : 'hidden'}
+                  // initial={'hidden'}
+                  // animate={m.isOpened ? 'visible' : 'hidden'}
                 >
-                  {getCategory(route, m.pages)}
+                  {m.isOpened && getCategory(route, m.pages)}
                 </motion.div>
               </div>
             );

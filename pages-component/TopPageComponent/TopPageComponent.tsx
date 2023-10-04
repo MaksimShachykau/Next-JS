@@ -35,11 +35,9 @@ const TopPageComponents = ({ page, products, firstCategory }: ITopPageProps): JS
                 {products && <Tag color='grey' size='m'>{products.length}</Tag>}
                 <Sort sort={sort} setSort={sortProducts}/>
             </div>
-            {sortedProducts && (
-                <ul>
-                    {sortedProducts.map(e => <Product key={e._id} product={e} />)}
-                </ul>
-            )}
+            <div>
+                {sortedProducts && sortedProducts.map(e => <Product layout key={e._id} product={e} />)}
+            </div>
             {firstCategory === TopLevelCategory.Courses && <HhData {...page.hh} category={page.category} />}
             { page &&
                 <>
