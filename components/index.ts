@@ -12,3 +12,4 @@ export * from './Input';
 export * from './TextAria';
 export * from './Product';
 export * from './ReviewForm';
+export * from './Up';

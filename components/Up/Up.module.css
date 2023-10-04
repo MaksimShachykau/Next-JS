@@ -1,0 +1,11 @@
+.buttonUp {
+	height: 40px;
+	width: 40px;
+	background: var(--primary);
+	border-radius: 10px;
+	border: none;
+	position: fixed;
+	bottom: 30px;
+	cursor: pointer;
+	right: 10px;
+}
