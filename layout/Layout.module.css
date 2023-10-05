@@ -30,7 +30,7 @@
 
 @media (width <= 765px) {
 	.header {
-		display: block;
+		display: grid;
 	}
 
 	.sidebar {
