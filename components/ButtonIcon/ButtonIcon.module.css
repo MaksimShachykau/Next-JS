@@ -1,0 +1,41 @@
+.button {
+	height: 40px;
+	width: 40px;
+	border-radius: 10px;
+	border: none;
+	cursor: pointer;
+}
+
+.primary {
+	color: white;
+	background-color: var(--primary);
+}
+
+.primary svg * {
+	fill: var(--white);
+}
+
+.primary:hover {
+	color: white;
+	background-color: var(--primary-hover);
+}
+
+
+.white {
+	color: white;
+	background-color: var(--white);
+}
+
+.white svg * {
+	fill: var(--primary);
+}
+
+.white:hover {
+	color: white;
+	background-color: var(--primary-hover);
+}
+
+.white:hover svg * {
+	color: white;
+	background-color: var(--primary-hover);
+}
