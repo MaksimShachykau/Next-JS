@@ -3,10 +3,9 @@ import { ISearchProps } from "./Search.props";
 
 import style from './Search.module.css';
 import Input from '../Input';
-import Glass from './glass.svg';
-import Button from '../Button';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import ButtonIcon from '../ButtonIcon';
 
 const Search = ({className, ...props}: ISearchProps): JSX.Element => {
     const [inputValue, setInputValue] = useState<string>('');
@@ -34,13 +33,12 @@ const Search = ({className, ...props}: ISearchProps): JSX.Element => {
                         }
                     }}
                 />
-                <Button
+                <ButtonIcon
                     appearance='primary'
-                    className={style.button}
+                    icon='glass'
                     onClick={() => goToSearchPage(inputValue)}
-                >
-                    <Glass/>
-                </Button>
+                    className={style.button}
+                />
         </div>
     );
 };
