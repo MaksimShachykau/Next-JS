@@ -4,11 +4,13 @@ import cn from 'classnames';
 import { IButtonIconProps, icons } from './ButtonIcon.props';
 
 import styles from './ButtonIcon.module.css';
+import { motion } from 'framer-motion';
 
 
 const ButtonIcon = ({ appearance, icon, className, ...props }: IButtonIconProps): JSX.Element => {
     const Icon = icons[icon];
-    return <button
+    return <motion.button
+        whileHover={{ scale: 1.05 }}
         className={
             cn(styles['button'],
             className,
@@ -17,7 +19,7 @@ const ButtonIcon = ({ appearance, icon, className, ...props }: IButtonIconProps)
         {...props}
         >
             <Icon />
-        </button>;
+        </motion.button>;
 };
 
 export default ButtonIcon;
