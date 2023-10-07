@@ -11,6 +11,9 @@ const ButtonIcon = ({ appearance, icon, className, ...props }: IButtonIconProps)
     const Icon = icons[icon];
     return <motion.button
         whileHover={{ scale: 1.05 }}
+        name={icon}
+        type='button'
+        aria-label={icon}
         className={
             cn(styles['button'],
             className,
