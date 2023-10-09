@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, KeyboardEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
@@ -45,6 +45,13 @@ const Menu = ():JSX.Element => {
       }));
     };
 
+    const setIsOpenMenuKey = (key: KeyboardEvent, secondCategory: string) => {
+      if(key.code === 'Space' || key.code === 'Enter') {
+        key.preventDefault();
+        setIsOpenMenu(secondCategory);
+      }
+    };
+
     const FirstLevelMenu = ():JSX.Element => {
       return (
         <div>{
@@ -75,16 +82,17 @@ const Menu = ():JSX.Element => {
             }
             return (
               <div key={m._id.secondCategory} className={styles['secondBlockWrapper']}>
-                <div className={cn(styles['secondLevel'], { [styles['secondLevelActive']]: m.isOpened })}
+                <div
+                  tabIndex={0}
+                  className={cn(styles['secondLevel'], { [styles['secondLevelActive']]: m.isOpened })}
                   onClick={() => setIsOpenMenu(m._id.secondCategory)}
+                  onKeyDown={(key: KeyboardEvent) => setIsOpenMenuKey(key, m._id.secondCategory)}
                 >
                   {m._id.secondCategory}
                 </div>
                 <motion.div
                   layout
                   variants={variants}
-                  // initial={'hidden'}
-                  // animate={m.isOpened ? 'visible' : 'hidden'}
                 >
                   {m.isOpened && getCategory(route, m.pages)}
                 </motion.div>
