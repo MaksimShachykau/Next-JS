@@ -22,6 +22,7 @@ const Sort = ({ sort, setSort, className, ...props }: ISortProps):JSX.Element =>
                 className={cn(styles['sortBy'], {
                     [styles['isActive']]: sort === SortEnum.ByRate
                 })}
+                aria-selected={sort === SortEnum.ByRate}
             >
                 <SortIcon/>by&nbsp;rating
             </span>
@@ -32,6 +33,7 @@ const Sort = ({ sort, setSort, className, ...props }: ISortProps):JSX.Element =>
                 className={cn(styles['sortBy'], {
                     [styles['isActive']]: sort === SortEnum.byPrice
                  })}
+                 aria-selected={sort === SortEnum.byPrice}
             >
                 <SortIcon/>by&nbsp;price
             </span>

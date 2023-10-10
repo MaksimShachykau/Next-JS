@@ -36,6 +36,7 @@ const Search = ({className, ...props}: ISearchProps): JSX.Element => {
                 <ButtonIcon
                     appearance='primary'
                     icon='glass'
+                    aria-label='search'
                     onClick={() => goToSearchPage(inputValue)}
                     className={style.button}
                 />
