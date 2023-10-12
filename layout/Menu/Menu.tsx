@@ -54,9 +54,9 @@ const Menu = ():JSX.Element => {
 
     const FirstLevelMenu = ():JSX.Element => {
       return (
-        <div>{
+        <ul className={styles['TopLevel']}>{
           firstLevelMenu.map(menu => (
-            <div key={menu.route}>
+            <li key={menu.route}>
               <Link href={`/${menu.route}`}
                 className={cn(styles['firstLevelMenu'],
                   {
@@ -67,46 +67,46 @@ const Menu = ():JSX.Element => {
                 {menu.icon} <div className={styles['name']}>{menu.name}</div>
               </Link>
               {menu.id === firstCategory && <SecondLevelMenu route={menu.route} />}
-            </div>
+            </li>
           ))
-        }</div>
+        }</ul>
       );
     };
 
     const SecondLevelMenu = ({ route }: {route: string}):JSX.Element => {
       return(
-        <div className={styles['secondBlock']}>
+        <ul className={styles['secondBlock']}>
           { menu.map(m => {
             if(m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
               m.isOpened = true;
             }
             return (
               <div key={m._id.secondCategory} className={styles['secondBlockWrapper']}>
-                <div
+                <li
                   tabIndex={0}
                   className={cn(styles['secondLevel'], { [styles['secondLevelActive']]: m.isOpened })}
                   onClick={() => setIsOpenMenu(m._id.secondCategory)}
                   onKeyDown={(key: KeyboardEvent) => setIsOpenMenuKey(key, m._id.secondCategory)}
                 >
                   {m._id.secondCategory}
-                </div>
-                <motion.div
+                </li>
+                <motion.ul
                   layout
                   variants={variants}
                 >
                   {m.isOpened && getCategory(route, m.pages)}
-                </motion.div>
+                </motion.ul>
               </div>
             );
           })}
-        </div>
+        </ul>
       );
     };
 
     const getCategory = (route: string, pages: IPageItem[]) => {
       return (
             pages.map(p => (
-              <motion.div
+              <motion.li
                 variants={variantsChildren}
                 key={p._id}
               >
@@ -118,7 +118,7 @@ const Menu = ():JSX.Element => {
                 >
                   {p.category}
                 </Link>
-              </motion.div>
+              </motion.li>
             ))
       );
     };
