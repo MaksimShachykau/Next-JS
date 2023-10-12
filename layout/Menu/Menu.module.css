@@ -1,3 +1,8 @@
+.TopLevel, .TopLevel ul {
+	list-style: none;
+	padding: 0;
+}
+
 .firstLevelMenu {
 	display: grid;
 	grid-template-columns: 24px 1fr;
