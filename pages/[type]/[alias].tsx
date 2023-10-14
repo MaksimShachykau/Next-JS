@@ -12,15 +12,25 @@ import { ITopPageModel } from '@/Interfaces/page.interface';
 import { IProductModel } from '@/Interfaces/product.interface';
 import { firstLevelMenu } from '@/helpers/helpers';
 import TopPageComponents from '@/pages-component/TopPageComponent';
+import Head from 'next/head';
 
 const TopPage = ({ page, firstCategory, products }: ITopPageProps):JSX.Element => {
 
   return (
-    <TopPageComponents
-      page={page}
-      firstCategory={firstCategory}
-      products={products}
-    />
+    <>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name='description' content={page.metaDescription}/>
+        <meta property='og:title' content={page.metaTitle}/>
+        <meta property='og:description' content={page.metaDescription}/>
+        <meta property='og:article' content={'article'}/>
+      </Head>
+      <TopPageComponents
+        page={page}
+        firstCategory={firstCategory}
+        products={products}
+      />
+    </>
   );
 };
 
