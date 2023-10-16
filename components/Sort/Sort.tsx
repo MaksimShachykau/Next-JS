@@ -1,7 +1,7 @@
 import { KeyboardEvent } from 'react';
 import cn from 'classnames';
 import { ISortProps, SortEnum } from "./Sort.props";
-import SortIcon from './Sort.svg';
+import SortIcon from './sort.svg';
 
 import styles from './Sort.module.css';
 
